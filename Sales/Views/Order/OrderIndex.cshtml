@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/stylesheet.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/order.js"></script>
+<script src="~/js/sweetalert.min.js"></script>
+
+<h1 class="attractive-heading">All Order Details</h1>
+
+<div style="display: flex;
+    justify-content: flex-end;">
+    <button class="btn btn-sm btn-primary m-2" id="btnAddOrder">
+        Add Order
+    </button>
+</div>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Product ID</th>
+            <th>Order Date</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center" id="table_data"></tbody>
+</table>
+
+<div class="modal fade modal" id="OrderModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title">Add Order</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label>Customer Name</label>
+                        <select asp-items="@(ViewBag.Customer)" id="CId">
+                            <option disabled selected value="0">--select Customer--</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Name</label>
+                        <select asp-items="@(ViewBag.Product)" id="PId">
+                            <option disabled selected value="0">--select Product--</option>
+                        </select>
+                    </div>
+
+                    @* <div class="mb-3">
+                        <label>Serial Number</label>
+                        <select  id="SerialNumberId">
+                            <option disabled selected value="0">--select Serial Number--</option>
+                        </select>
+                    </div> *@
+
+
+                    <div class="mb-3">
+                        <label>Order Date</label>
+                        <input type="date" placeholder="Enter Date" class="form-control" id="ODate" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Quantity</label>
+                        <input type="number" placeholder="Enter quantity" class="form-control" id="Quantity" />
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="AddOrder();" id="AddOrder">Save</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal" id="EditOrderModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title">Edit Order Record</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label>Order ID</label>
+                        <input type="number" class="form-control" id="OrderId" disabled="disabled" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Customer Name</label>
+                        <select asp-items="@(ViewBag.Customer)" id="ECId">
+                            
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Name</label>
+                        <select asp-items="@(ViewBag.Product)" id="EPId">
+                            
+                        </select>
+                    </div>
+
+                    @* <div class="mb-3">
+                        <label>Serial Number</label>
+                        <select id="ESerialNumberId">
+                           
+                        </select>
+                    </div> *@
+
+
+                    <div class="mb-3">
+                        <label>Order Date</label>
+                        <input type="date" placeholder="Enter Date" class="form-control" id="EODate" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Quantity</label>
+                        <input type="number" placeholder="Enter quantity" class="form-control" id="EQuantity" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" onclick="UpdateOrder();" style="display:none" id="btnUpdate">Update</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

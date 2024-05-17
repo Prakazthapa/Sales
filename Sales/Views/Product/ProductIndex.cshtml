@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("_Autocomplete", "Search Products")
+
+
+@model Sales.Models.Product;
+
+<link href="~/css/autocomplete.css" rel="stylesheet" />
+<link href="~/css/stylesheet.css" rel="stylesheet" />
+
+@* <partial name="_Autocomplete" /> *@
+
+<br />
+<br />
+<br />
+
+<h1 class="attractive-heading">All Products</h1>
+
+<div style="display: flex;
+    justify-content: flex-end;">
+    <button class="btn btn-sm btn-primary m-2" id="btnAddProduct">
+        Add Product
+    </button>
+</div>
+
+<br />
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center" id="table_data"></tbody>
+</table>
+
+<div class="modal fade modal" id="ProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title">Add Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label>Product Name</label>
+                        <input type="text" placeholder="Enter name" class="form-control" id="PName" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Product Description</label>
+                        <input type="text" placeholder="Enter about Product" class="form-control" id="PDescription" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Price</label>
+                        <input type="number" placeholder="Enter Product Price" class="form-control" id="Price" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="AddProduct();" id="AddProduct">Save</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal" id="EditProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title">Edit Product Record</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label>Product ID</label>
+                        <input type="number" class="form-control" id="ProductId" disabled="disabled" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Name</label>
+                        <input type="text" placeholder="Enter name" class="form-control" id="PEName" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Description</label>
+                        <input type="text" placeholder="Enter about Product" class="form-control" id="PEDescription" />
+                    </div>
+                    <div class="mb-3">
+                        <label>Product Price</label>
+                        <input type="number" placeholder="Enter Product Price" class="form-control" id="EPrice" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" onclick="UpdateProduct();" style="display:none" id="btnUpdate">Update</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/sweetalert.min.js"></script>
+<script src="~/js/autocomplete.js"></script>
+<script src="~/js/product.js"></script>
+
+
+
+
+

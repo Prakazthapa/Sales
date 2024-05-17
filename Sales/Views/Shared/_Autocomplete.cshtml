@@ -1,0 +1,23 @@
+﻿@* 
+<link href="~/css/autocomplete.css" rel="stylesheet" />
+<form id="searchForm" autocomplete="off" >
+    <div class="autocomplete" style="width:1000px;">
+        <input id="myInput" type="text" name="mylist" placeholder="search" style="padding-right: 10px;">
+    </div>
+    <input type="submit" value="Search">
+    <input id="backtolist" type="submit" value="Back To List" />
+</form> 
+ *@
+
+<link href="~/css/autocomplete.css" rel="stylesheet" />
+
+@model string
+
+<form id="searchForm" autocomplete="off">
+    <div class="autocomplete" style="width:1000px;">
+        <input id="myInput" type="text" name="mylist" placeholder="@Model" style="padding-right: 10px;">
+    </div>
+    <input type="submit" value="Search">
+    <input id="backtolist" type="submit" value="Back To List" />
+</form>
+

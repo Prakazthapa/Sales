@@ -1,0 +1,15 @@
+﻿#backtolist {
+    background-color:green;
+}
+.attractive-heading {
+    font-family: 'Arial', sans-serif; /* Use a preferred font family */
+    font-size: 36px; /* Adjust size as needed */
+    color: #333; /* Choose a suitable color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
+    text-transform: uppercase; /* Transform text to uppercase */
+    letter-spacing: 2px; /* Add letter spacing for emphasis */
+    line-height: 1.5; /* Adjust line height for better readability */
+    text-align: center; /* Center align text */
+}
+
+
